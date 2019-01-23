@@ -1,0 +1,172 @@
+html {
+  font-size: 100px; /*1REM=100PX*/
+}
+
+html, body, .mainBox {
+  position: relative;
+  z-index: -3;
+  height: 100%;
+  overflow: hidden;
+  background: #F4F4F4;
+}
+
+/*MAIN*/
+.mainBox {
+  position: relative;
+  margin: 0 auto;
+  max-width: 640px;
+}
+.mainBox .backgroundImg ,
+.mainBox .backgroundMark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  filter: blur(6px);
+}
+.mainBox .backgroundImg {
+  width: auto;
+}
+.mainBox .backgroundMark {
+  z-index: -1;
+  filter: none;
+  background: rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 .5rem .2rem #000;
+}
+.headerBox {
+  position: relative;
+  padding: .3rem;
+  height: 1.2rem;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .2);
+}
+.headerBox .pic {
+  position: absolute;
+  top: .3rem;
+  left: .3rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.headerBox .title {
+  margin-left: 1.4rem;
+  color: #fff;
+}
+.title h1 {
+  line-height: .6rem;
+  font-size: .36rem;
+  font-weight: normal;
+}
+.title h2 {
+  line-height: .6rem;
+  font-size: .32rem;
+}
+.headerBox .playBtn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: .3rem;
+  margin-top: -.3rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: url("../img/music.svg") no-repeat;
+  background-size: 100% 100%;
+}
+.headerBox .playBtn.move {
+  animation: musicMove 1s linear infinite both;
+}
+@keyframes musicMove {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+// footerBox
+.footerBox {
+  margin: 0 .2rem;  
+  padding-bottom: .2rem;
+}
+.footerBox .progressBox {
+  position: relative;
+  height: .8rem;
+  overflow: hidden;
+}
+.footerBox .progressBox span {
+  position: absolute;
+  top: 0;
+  width: .9rem;
+  height: .8rem;
+  line-height: .8rem;
+  text-align: center;
+  font-size: .24rem;
+  color: rgba(255, 255, 255, .5);  
+}
+.footerBox .progressBox span.already {
+  left: 0;
+}
+.footerBox .progressBox span.duration {
+  right: 0;
+}
+.footerBox .progressBox .progress {
+  position: relative;
+  margin: .38rem auto;
+  width: 4.2rem;
+  height: .04rem;  
+  background: #fff;
+}
+.footerBox .progressBox .progress .current {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #31C27C;
+  transition: 1s;
+}
+.footerBox .downLoadBtn {
+  display: block;
+  margin: 0 auto;
+  width: 4.4rem;
+  height: .9rem;
+  line-height: .9rem;
+  text-align: center;
+  color: #fff;
+  font-size: .36rem;
+  background: #31C27C;
+  background: url("../img/sprite_play.png") no-repeat .2rem -5.86rem #31C27C;
+  background-size: .8rem 7rem;
+  border-radius: .45rem;
+}
+.footerBox .downLoadBtn:active {
+  background-color: darken(#31C27C, 20%);
+}
+.contentBox {
+  position: relative;
+  margin: .4rem .2rem;
+  /*height: ; 内容区域是不能固定的:一屏幕的高度-HEADER-FOOTER-MARGIN  WRAPPER的高度是内容撑开的，即使比CONTENT高也没有问题，因为已经做了溢出隐藏，后期控制WRAPPER在CONTENT中上下运动即可*/
+  overflow: hidden;
+}
+.contentBox .wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transition: .5s; /*当WRAPPER运动的时候可以有平缓的过渡效果*/
+}
+.contentBox .wrapper p {
+  line-height: .84rem;
+  text-align: center;
+  font-size: .32rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: .04rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.contentBox .wrapper p.active {
+  color: #31C27C;
+}
