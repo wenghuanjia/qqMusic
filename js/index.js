@@ -48,6 +48,9 @@ let musicRender = (function () {
     let $plan = $.Callbacks();
     let playRun = function playRun() {
         // musicAudio.play();
+        // 报错：Uncaught (in promise) DOMException
+        // 原因：浏览器禁止了音视频的自动播放
+        // 解决
         // add start
         document.body.addEventListener('mousedown', function(){
             musicAudio.play();
