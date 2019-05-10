@@ -47,7 +47,12 @@ let musicRender = (function () {
     // 发布订阅设计模式
     let $plan = $.Callbacks();
     let playRun = function playRun() {
-        musicAudio.play();
+        // musicAudio.play();
+        // add start
+        document.body.addEventListener('mousedown', function(){
+            musicAudio.play();
+        }, false);
+        // add end
         musicAudio.addEventListener('canplay', $plan.fire);
     };
     // 控制暂停播放
